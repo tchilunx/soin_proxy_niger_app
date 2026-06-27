@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../injection/injection.dart';
 import '../../domain/entities/care_request.dart';
@@ -288,8 +289,11 @@ class _CareRequestTrackingPageState extends State<CareRequestTrackingPage>
                     ),
                     if (request.professionalPhone != null)
                       IconButton(
-                        onPressed: () {
-                          // TODO: Call professional
+                        onPressed: () async {
+                          final url = Uri.parse('tel:${request.professionalPhone}');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url);
+                          }
                         },
                         icon: Container(
                           width: 48,

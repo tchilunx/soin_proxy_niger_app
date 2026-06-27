@@ -12,6 +12,7 @@ import '../../../care_request/domain/entities/care_request.dart';
 import '../bloc/professional_bloc.dart';
 import '../bloc/professional_event.dart';
 import '../bloc/professional_state.dart';
+import 'package:geolocator/geolocator.dart';
 import '../../domain/entities/medical_professional.dart';
 
 class ProfessionalHomePage extends StatefulWidget {
@@ -619,11 +620,15 @@ class _HomeTab extends StatelessWidget {
   }
 
   String _calculateDistance(CareRequest request) {
-    // TODO: Calculate real distance based on location
-    if (request.latitude != null && request.longitude != null) {
-      return '~2 km';
-    }
-    return 'N/A';
+    if (request.latitude == null || request.longitude == null) return 'N/A';
+    final profLat = state.profile?.currentLatitude;
+    final profLng = state.profile?.currentLongitude;
+    if (profLat == null || profLng == null) return '~? km';
+    final meters = Geolocator.distanceBetween(
+      profLat, profLng,
+      request.latitude!, request.longitude!,
+    );
+    return '${(meters / 1000).toStringAsFixed(1)} km';
   }
 
   String _formatTime(DateTime? time) {

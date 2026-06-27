@@ -60,6 +60,8 @@ class _LoginPageState extends State<LoginPage> {
               context.go('/patient');
             } else if (state.isMedicalProfessional) {
               context.go('/professional');
+            } else if (state.isPharmacist) {
+              context.go('/pharmacist');
             }
           }
         },

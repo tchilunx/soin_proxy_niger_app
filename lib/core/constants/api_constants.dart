@@ -11,8 +11,13 @@ class ApiConstants {
   static const String apiVersion = '/api/v1';
   static const String apiBaseUrl = '$baseUrl$apiVersion';
 
-  // WebSocket — même host que baseUrl
-  static const String wsBaseUrl = '${String.fromEnvironment('API_BASE_URL', defaultValue: 'ws://10.0.2.2:3000')}/cable';
+  // WebSocket — dérivé de baseUrl (http→ws, https→wss)
+  static String get wsBaseUrl {
+    final ws = baseUrl
+        .replaceFirst('https://', 'wss://')
+        .replaceFirst('http://', 'ws://');
+    return '$ws/cable';
+  }
 
   // Auth endpoints
   static const String login = '$apiBaseUrl/auth/login';
