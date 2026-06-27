@@ -157,7 +157,6 @@ class ProfessionalRemoteDataSourceImpl implements ProfessionalRemoteDataSource {
         data: {
           'care_request': {
             'status': 'accepted',
-            'accepted_at': DateTime.now().toIso8601String(),
           },
         },
       );

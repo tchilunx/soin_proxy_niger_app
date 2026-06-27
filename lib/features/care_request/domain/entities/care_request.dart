@@ -98,6 +98,7 @@ class CareRequest extends Equatable {
     String? suggestedPharmacyName,
     int? rating,
     String? ratingComment,
+    bool? deliveryRequested,
   }) {
     return CareRequest(
       id: id ?? this.id,

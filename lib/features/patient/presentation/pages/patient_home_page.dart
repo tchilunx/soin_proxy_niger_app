@@ -1017,17 +1017,38 @@ class _ProfileTab extends StatelessWidget {
               _ProfileMenuItem(
                 icon: Icons.person_outline,
                 label: 'Informations personnelles',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.location_on_outlined,
                 label: 'Adresses enregistrées',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.medical_information_outlined,
                 label: 'Dossier médical',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
             ]),
             const SizedBox(height: 24),
@@ -1035,18 +1056,39 @@ class _ProfileTab extends StatelessWidget {
               _ProfileMenuItem(
                 icon: Icons.notifications_outlined,
                 label: 'Notifications',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.security_outlined,
                 label: 'Sécurité',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.language_outlined,
                 label: 'Langue',
                 trailing: 'Français',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
             ]),
             const SizedBox(height: 24),
@@ -1054,17 +1096,38 @@ class _ProfileTab extends StatelessWidget {
               _ProfileMenuItem(
                 icon: Icons.help_outline,
                 label: 'Aide & FAQ',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.privacy_tip_outlined,
                 label: 'Politique de confidentialité',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.description_outlined,
                 label: 'Conditions d\'utilisation',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
             ]),
             const SizedBox(height: 24),

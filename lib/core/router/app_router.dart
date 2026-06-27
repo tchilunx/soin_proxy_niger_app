@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +25,7 @@ import '../../features/professional/presentation/pages/rating_page.dart';
 import '../../features/pharmacist/presentation/bloc/pharmacist_bloc.dart';
 import '../../features/pharmacist/presentation/bloc/pharmacist_event.dart';
 import '../../features/pharmacist/presentation/pages/pharmacist_home_page.dart';
+import '../../features/pharmacist/presentation/pages/pharmacist_request_detail_page.dart';
 import '../../features/pharmacist/presentation/pages/pharmacist_suggestion_detail_page.dart';
 import '../../injection/injection.dart';
 
@@ -202,10 +204,7 @@ class AppRouter {
               name: 'pharmacist-request-detail',
               builder: (context, state) {
                 final id = state.pathParameters['id']!;
-                return Scaffold(
-                  appBar: AppBar(title: Text('Demande #$id')),
-                  body: Center(child: Text('Détails de la demande $id')),
-                );
+                return PharmacistRequestDetailPage(requestId: id);
               },
             ),
             GoRoute(
@@ -247,7 +246,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
     _subscription = stream.listen((_) => notifyListeners());
   }
 
-  late final dynamic _subscription;
+  late final StreamSubscription<AuthState> _subscription;
 
   @override
   void dispose() {

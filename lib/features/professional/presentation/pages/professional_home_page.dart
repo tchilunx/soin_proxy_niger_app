@@ -12,6 +12,7 @@ import '../../../care_request/domain/entities/care_request.dart';
 import '../bloc/professional_bloc.dart';
 import '../bloc/professional_event.dart';
 import '../bloc/professional_state.dart';
+import '../../domain/entities/medical_professional.dart';
 
 class ProfessionalHomePage extends StatefulWidget {
   const ProfessionalHomePage({super.key});
@@ -115,7 +116,11 @@ class _HomeTab extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Méd. Généraliste',
+                              state.profile?.profession == Profession.nurse
+                                  ? 'Infirmier(e)'
+                                  : state.profile?.specialties?.isNotEmpty == true
+                                      ? state.profile!.specialties!.first
+                                      : 'Médecin Généraliste',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 14,
@@ -1027,12 +1032,26 @@ class _ProfileTab extends StatelessWidget {
               _ProfileMenuItem(
                 icon: Icons.person_outline,
                 label: 'Informations personnelles',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.badge_outlined,
                 label: 'Documents professionnels',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
             ]),
             const SizedBox(height: 24),
@@ -1040,12 +1059,26 @@ class _ProfileTab extends StatelessWidget {
               _ProfileMenuItem(
                 icon: Icons.notifications_outlined,
                 label: 'Notifications',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
               _ProfileMenuItem(
                 icon: Icons.security_outlined,
                 label: 'Sécurité',
-                onTap: () {},
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fonctionnalité bientôt disponible'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
               ),
             ]),
             const SizedBox(height: 24),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../injection/injection.dart';
 import '../../domain/entities/care_request.dart';
+import '../bloc/care_request_bloc.dart';
+import '../bloc/care_request_event.dart';
 
 class CareRequestTrackingPage extends StatefulWidget {
   final CareRequest? request;
@@ -18,6 +21,7 @@ class CareRequestTrackingPage extends StatefulWidget {
 class _CareRequestTrackingPageState extends State<CareRequestTrackingPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _pulseController;
+  late CareRequestBloc _careRequestBloc;
 
   @override
   void initState() {
@@ -26,11 +30,13 @@ class _CareRequestTrackingPageState extends State<CareRequestTrackingPage>
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat();
+    _careRequestBloc = getIt<CareRequestBloc>();
   }
 
   @override
   void dispose() {
     _pulseController.dispose();
+    _careRequestBloc.close();
     super.dispose();
   }
 
@@ -471,7 +477,7 @@ class _CareRequestTrackingPageState extends State<CareRequestTrackingPage>
   void _showCancelDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (dialogContext) => AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -481,12 +487,17 @@ class _CareRequestTrackingPageState extends State<CareRequestTrackingPage>
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: const Text('Non'),
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(dialogContext);
+              if (widget.request?.id != null) {
+                _careRequestBloc.add(
+                  CareRequestCancelRequested(widget.request!.id!),
+                );
+              }
               context.go('/patient');
             },
             style: ElevatedButton.styleFrom(
