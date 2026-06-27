@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth *)",
+      "Read(//home/iro/workspace-flutter/**)",
+      "Read(//home/iro/**)",
+      "Bash(git -C /home/iro/worspace-rails/soin_proxy_niger status)",
+      "Bash(git -C /home/iro/workspace-flutter/soin_proxy_niger_app status)",
+      "Bash(git -C /home/iro/worspace-rails/soin_proxy_niger remote -v)",
+      "Bash(pip show *)",
+      "Bash(curl -s https://api.github.com/users/tchilunx)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git config *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)"
+    ]
+  }
+}
